@@ -12,7 +12,7 @@ class Game
     name2 = gets.chomp
     @player2 = Player.new(name2)
     @current_player = @player1
-    
+
     new_turn
   end
 
@@ -31,10 +31,18 @@ class Game
     end 
     switch_turn
 
-   puts  "P1: #{@player1.score} vs P2: #{@player2.score}"
-   new_turn
+   puts "P1 Score: #{@player1.score} vs P2 Score: #{@player2.score}"
+   puts "P1 Lives: #{@player1.lives} vs P2 Lives: #{@player2.lives}"  
    puts  "------ NEW TURN ------"
-
+  puts "#{@current_player.name} turn"
+   question = Question.new
+   puts "difficulty easy, to increase difficulty type: 'yes': otherwise hit enter"
+   difficulty = gets.chomp
+   if difficulty == "yes"
+    question.increase_difficulty
+   end 
+   question.random_question(@current_player)
+   new_turn
   end
 
   # if one player is out of lives will then annonce the winner with the highest score 

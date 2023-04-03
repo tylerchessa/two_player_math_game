@@ -2,5 +2,6 @@
 # It requires the other files/gems that it needs
 require './player'
 require './game'
+require './question'
 
 game = Game.new 
